@@ -13,25 +13,28 @@ const groupPref = [
 	{ id: 'g4', text: 'Solo Only', val: 'solo' }
 ];
 
+const contract = [
+	{ id: 'c1', text: 'Select Status', val: '' },
+	{ id: 'c2', text: 'Unsigned', val: 'unsigned' },
+	{ id: 'c3', text: 'Signed', val: 'signed' },
+	{ id: 'c4', text: 'Employed', val: 'employed' },
+	{ id: 'c5', text: 'Freelance', val: 'freelance' }
+];
+
 const Profile = props => {
 	const { register, handleSubmit } = useForm();
 	const { action, state } = useStateMachine(updateAction);
 	const onSubmit = data => {
 		action(data);
+		console.log('data', data);
 		props.history.push('./Experience');
-		console.log({
-			function: 'onSubmit',
-			location: 'profile',
-			data: data
-		});
 	};
-	console.log(props.location);
-	console.log('Profile Step:' + state.data.step);
 	return (
 		<div>
 			<Steps step={props.location.pathname} />
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<TextField
+					register={register}
 					label='First Name'
 					type='text'
 					placeholder='First Name'
@@ -40,6 +43,7 @@ const Profile = props => {
 				/>
 
 				<TextField
+					register={register}
 					label='Last Name'
 					type='text'
 					placeholder='Last Name'
@@ -47,6 +51,7 @@ const Profile = props => {
 					default={state.data.lastName}
 				/>
 				<TextField
+					register={register}
 					label='Email'
 					type='email'
 					placeholder='Email Address'
@@ -54,10 +59,10 @@ const Profile = props => {
 					hasIcon={true}
 					iconLeft='envelope'
 					iconRight='check'
-					refPattern={register({ required: true, pattern: /^\S+@\S+$/i })}
 					default={state.data.email}
 				/>
 				<TextField
+					register={register}
 					label='Phone'
 					type='tel'
 					placeholder='Phone Number'
@@ -69,25 +74,8 @@ const Profile = props => {
 				/>
 
 				<h2>Performance/Work Preference</h2>
-				<Dropdown name='groupPref' options={groupPref} />
-				<div className='select is-rounded'>
-					<select name='groupPref2' ref={register}>
-						<option value='both'>Group and Solo</option>
-						<option value='group'>Group/Team Only</option>
-						<option value='solo'>Solo Only</option>
-					</select>
-				</div>
-
-				<h2>Under Contract?</h2>
-				<div className='select is-rounded'>
-					<select name='contract' ref={register({ required: true })}>
-						<option value='free_agent'>N/A</option>
-						<option value='signed'>Signed to Label</option>
-						<option value='employed'>Employed in Industry</option>
-						<option value='freelance'>Freelance</option>
-					</select>
-				</div>
-
+				<Dropdown name='groupPref' register={register} options={groupPref} />
+				<Dropdown name='contract' register={register} options={contract} />
 				<div className='control'>
 					<button className='button is-primary'>Submit</button>
 				</div>

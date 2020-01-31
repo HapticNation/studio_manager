@@ -4,7 +4,23 @@ import { withRouter } from 'react-router-dom';
 import { useStateMachine } from 'little-state-machine';
 import updateAction from '../../actions/updateAction';
 import { Steps } from '../Steps';
+import { Dropdown } from '../Fields';
 
+const focusArea = [
+	{ id: 'f1', text: 'Select Focus Area', val: '' },
+	{ id: 'f2', text: 'Performer', val: 'Performer' },
+	{ id: 'f3', text: 'Group and Solo', val: 'Writer' },
+	{ id: 'f4', text: 'Group Only', val: 'Producer' },
+	{ id: 'f5', text: 'Solo Only', val: 'Engineer' },
+	{ id: 'f6', text: 'Group Only', val: 'Technician' }
+];
+/*
+					<option value='Performer'>Performer</option>
+					<option value='Writer'>Writer</option>
+					<option value='Producer'>Producer</option>
+					<option value='Engineer'>Engineer</option>
+					<option value='Technician'>Technician</option>
+*/
 const Experience = props => {
 	const { register, handleSubmit } = useForm();
 	const { action, state } = useStateMachine(updateAction);
@@ -19,18 +35,11 @@ const Experience = props => {
 			<Steps step={props.location.pathname} />
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<h2>Experience</h2>
-				<label>Specialty</label>
-				<select
-					name='preferredWork'
-					ref={register({ required: true })}
-					defaultValue={state.data.preferredWork}
-				>
-					<option value='Performer'>Performer</option>
-					<option value='Writer'>Writer</option>
-					<option value='Producer'>Producer</option>
-					<option value='Engineer'>Engineer</option>
-					<option value='Technician'>Technician</option>
-				</select>
+				<br />
+				<label>Focus Area</label>
+				<br />
+				<Dropdown name='focusArea' register={register} options={focusArea} />
+
 				<label>
 					<h3>Strengths:</h3>
 				</label>
