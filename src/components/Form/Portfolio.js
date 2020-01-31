@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { useStateMachine } from 'little-state-machine';
 import updateAction from '../../actions/updateAction';
 import { Steps } from '../Steps';
+import { CardHeader, CardContent, CardTitle, CardSubtitle, CardFooter } from '../Layout';
 
 const Portfolio = props => {
 	const { register, handleSubmit } = useForm();
@@ -16,7 +17,10 @@ const Portfolio = props => {
 
 	return (
 		<div>
-			<Steps step={props.location.pathname} />
+			<CardHeader>
+				<Steps step={props.location.pathname} />
+				<CardTitle title='Portfolio' />
+			</CardHeader>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<h2>Step 1</h2>
 				<label>

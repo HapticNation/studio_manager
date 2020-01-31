@@ -7,6 +7,9 @@
 	"dependencies": {
 		"bulma": "0.8.0",
 		"bulma-o-steps": "1.0.9",
+		"bulmaswatch": "^0.7.5",
+		"concurrently": "^5.1.0",
+		"cool-checkboxes-for-bulma.io": "^1.1.0",
 		"little-state-machine": "2.11.1",
 		"node-sass": "4.13.1",
 		"react": "16.12.0",
@@ -20,8 +23,10 @@
 	},
 	"scripts": {
 		"start": "react-scripts start",
+		"deploy": "concurrently \"react-scripts build\" \"aws s3 sync build/ s3://haptic-studio-dex --profile webapp-cli\"",
 		"build": "react-scripts build",
-		"deploy": "aws s3 sync build/ s3://haptic-studio-dex --profile webapp-cli",
+		"css-build": "node-sass --omit-source-map-url sass/mystyles.scss css/mystyles.css",
+		"css-watch": "npm run css-build -- --watch",
 		"test": "react-scripts test --env=jsdom",
 		"eject": "react-scripts eject"
 	},

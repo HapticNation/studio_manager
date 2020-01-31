@@ -3,7 +3,7 @@ import { StepItem } from './';
 
 const Steps = props => {
 	return (
-		<ul className='steps is-horizontal is-narrow is-centered has-content-centered'>
+		<ul className='steps is-horizontal'>
 			<StepItem
 				path='/'
 				active={props.step === '/' ? 'is-active' : ''}
