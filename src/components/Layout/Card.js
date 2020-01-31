@@ -32,5 +32,9 @@ export const CardFooter = props => {
 };
 
 export const Card = props => {
-	return <div className='card'>{props.children}</div>;
+	return (
+		<div id='card-wrapper' className='container'>
+			<div className='card card-form'>{props.children}</div>
+		</div>
+	);
 };

@@ -40,92 +40,88 @@ const Profile = props => {
 		props.history.push('./Experience');
 	};
 	return (
-		<div className='columns is-centered'>
-			<div className='column is-full'>
-				<section class='hero is-dark '>
-					<div className='columns is-centered' />
-					<div class='column is-full has-text-centered'>
-						<div class='hero-head'>
-							<p className='title'>Haptic Nation</p>
+		<>
+			<section className='hero is-dark '>
+				<div className='hero-head'>
+					<section className='hero-segment-title has-text-centered'>
+						<p className='title'>Haptic Nation</p>
+					</section>
+				</div>
+
+				<div className='hero-foot'>
+					<section className='hero-segment-steps'>
+						<Steps step={props.location.pathname} />
+					</section>
+				</div>
+			</section>
+
+			<Card>
+				<form onSubmit={handleSubmit(onSubmit)}>
+					<CardHeader>
+						<CardTitle title='Profile' />
+					</CardHeader>
+
+					<CardContent>
+						<TextField
+							register={register}
+							label='First Name'
+							type='text'
+							placeholder='First Name'
+							name='firstName'
+							default={state.data.firstName}
+						/>
+
+						<TextField
+							register={register}
+							label='Last Name'
+							type='text'
+							placeholder='Last Name'
+							name='lastName'
+							default={state.data.lastName}
+						/>
+						<TextField
+							register={register}
+							label='Email'
+							type='email'
+							placeholder='Email Address'
+							name='email'
+							hasIcon={true}
+							iconLeft='envelope'
+							iconRight='check'
+							default={state.data.email}
+						/>
+						<TextField
+							register={register}
+							label='Phone'
+							type='tel'
+							placeholder='Phone Number'
+							name='phone'
+							hasIcon={true}
+							iconLeft='phone'
+							iconRight='check'
+							default={state.data.phone}
+						/>
+
+						<CardSubtitle subtitle='Performance/Work Preference' />
+						<Dropdown
+							name='groupPref'
+							register={register}
+							options={groupPref}
+						/>
+						<Dropdown
+							name='contract'
+							register={register}
+							options={contract}
+						/>
+					</CardContent>
+					<CardFooter>
+						<div className='control'>
+							<button className='button is-primary'>Submit</button>
 						</div>
-						<div className='column is-three-quarters'>
-							<div className='hero-foot'>
-								<Steps step={props.location.pathname} />
-							</div>
-						</div>
-					</div>
-				</section>
-			</div>
-			<div />
-			<div className='column is-three-quarters'>
-				<Card>
-					<form onSubmit={handleSubmit(onSubmit)}>
-						<CardHeader>
-							<CardTitle title='Profile' />
-						</CardHeader>
-
-						<CardContent>
-							<TextField
-								register={register}
-								label='First Name'
-								type='text'
-								placeholder='First Name'
-								name='firstName'
-								default={state.data.firstName}
-							/>
-
-							<TextField
-								register={register}
-								label='Last Name'
-								type='text'
-								placeholder='Last Name'
-								name='lastName'
-								default={state.data.lastName}
-							/>
-							<TextField
-								register={register}
-								label='Email'
-								type='email'
-								placeholder='Email Address'
-								name='email'
-								hasIcon={true}
-								iconLeft='envelope'
-								iconRight='check'
-								default={state.data.email}
-							/>
-							<TextField
-								register={register}
-								label='Phone'
-								type='tel'
-								placeholder='Phone Number'
-								name='phone'
-								hasIcon={true}
-								iconLeft='phone'
-								iconRight='check'
-								default={state.data.phone}
-							/>
-
-							<CardSubtitle subtitle='Performance/Work Preference' />
-							<Dropdown
-								name='groupPref'
-								register={register}
-								options={groupPref}
-							/>
-							<Dropdown
-								name='contract'
-								register={register}
-								options={contract}
-							/>
-						</CardContent>
-						<CardFooter>
-							<div className='control'>
-								<button className='button is-primary'>Submit</button>
-							</div>
-						</CardFooter>
-					</form>
-				</Card>
-			</div>
-		</div>
+					</CardFooter>
+				</form>
+			</Card>
+		</>
 	);
 };
 

@@ -1,4 +1,76 @@
 @charset "utf-8";
+// Variables
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+//
+// Mixins
+//
+
+//Media Queries
+@mixin mobile {
+	@media (max-width: #{$tablet-width - 1px}) {
+		@content;
+	}
+}
+@mixin tablet {
+	@media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+		@content;
+	}
+}
+
+@mixin desktop {
+	@media (min-width: #{$desktop-width}) {
+		@content;
+	}
+}
+
+// HERO SEGMENT PADDINGS
+.hero-segment-title {
+	@include mobile {
+		padding: 1.5em 2em 0 2em;
+	}
+	@include tablet {
+		padding: 1.5em 5em 0 5em;
+	}
+	@include desktop {
+		margin: 2em 15em 0 15em;
+	}
+}
+
+.hero-segment-steps {
+	@include mobile {
+		padding: 1.5em 2em 1.5em 2em;
+	}
+	@include tablet {
+		padding: 1.5em 10em 1.5em 10em;
+	}
+	@include desktop {
+		margin: 2em 15em 2em 15em;
+	}
+}
+
+#card-wrapper {
+	max-width: 768px;
+}
+
+.card-form {
+	@include mobile {
+		width: 95vw;
+		margin: 1em auto;
+	}
+	@include tablet {
+		width: 100%;
+		max-width: 500px;
+		margin: 2em auto;
+	}
+	@include desktop {
+		width: 100%;
+		max-width: 500px;
+		margin: 2em auto;
+	}
+}
+
 // @import "~bulmaswatch/darkly/bulmaswatch";
 // @import "~bulma/bulma.sass";
 @import '~bulmaswatch/flatly/_variables';
