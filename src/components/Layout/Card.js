@@ -28,7 +28,21 @@ export const CardContent = props => {
 };
 
 export const CardFooter = props => {
-	return <footer className='card-footer'>{props.children}</footer>;
+	return (
+		<footer className='card-footer'>
+			<div className='container'>{props.children}</div>
+		</footer>
+	);
+};
+
+export const CardSubmit = props => {
+	return (
+		<CardFooter>
+			<div className='control'>
+				<button className='button is-primary'>Submit</button>
+			</div>
+		</CardFooter>
+	);
 };
 
 export const Card = props => {

@@ -4,8 +4,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { StateMachineProvider, createStore, DevTool } from 'little-state-machine';
 import { Profile, Experience, Portfolio, Result } from './components/Form';
 import './styles/scss/styles.scss';
-import { Card } from './components/Layout';
-import { Steps } from './components/Steps';
 
 createStore({
 	data: {}

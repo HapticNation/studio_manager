@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form';
 import { withRouter } from 'react-router-dom';
 import { useStateMachine } from 'little-state-machine';
 import updateAction from '../../actions/updateAction';
-import { Steps } from '../Steps';
 import { TextField, Dropdown } from '../Fields';
 
 import {
@@ -11,9 +10,9 @@ import {
 	CardHeader,
 	CardFooter,
 	CardTitle,
-	CardImage,
 	CardSubtitle,
-	CardContent
+	CardContent,
+	HeroWithSteps
 } from '../Layout';
 
 const groupPref = [
@@ -41,22 +40,10 @@ const Profile = props => {
 	};
 	return (
 		<>
-			<section className='hero is-dark '>
-				<div className='hero-head'>
-					<section className='hero-segment-title has-text-centered'>
-						<p className='title'>Haptic Nation</p>
-					</section>
-				</div>
+			<HeroWithSteps step={props.location.pathname} />
 
-				<div className='hero-foot'>
-					<section className='hero-segment-steps'>
-						<Steps step={props.location.pathname} />
-					</section>
-				</div>
-			</section>
-
-			<Card>
-				<form onSubmit={handleSubmit(onSubmit)}>
+			<form onSubmit={handleSubmit(onSubmit)}>
+				<Card>
 					<CardHeader>
 						<CardTitle title='Profile' />
 					</CardHeader>
@@ -119,8 +106,8 @@ const Profile = props => {
 							<button className='button is-primary'>Submit</button>
 						</div>
 					</CardFooter>
-				</form>
-			</Card>
+				</Card>
+			</form>
 		</>
 	);
 };
