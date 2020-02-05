@@ -9,6 +9,7 @@ const MultiSelect = ({ register, ...props }) => {
 			options={props.options}
 			className='is-rounded'
 			classNamePrefix='select'
+			formatGroupLabel={props.grouped ? props.grouped : ''}
 			ref={register}
 		/>
 	);

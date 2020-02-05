@@ -6,6 +6,31 @@ import updateAction from '../../actions/updateAction';
 import { Dropdown, Form, MultiSelect } from '../Fields';
 import { focusArea, strengths, groupedInstruments, genres } from '../../data';
 
+const groupStyles = {
+	display: 'flex',
+	alignItems: 'center',
+	justifyContent: 'space-between'
+};
+const groupBadgeStyles = {
+	backgroundColor: '#EBECF0',
+	borderRadius: '2em',
+	color: '#172B4D',
+	display: 'inline-block',
+	fontSize: 12,
+	fontWeight: 'normal',
+	lineHeight: '1',
+	minWidth: 1,
+	padding: '0.16666666666667em 0.5em',
+	textAlign: 'center'
+};
+
+const formatGroupLabel = data => (
+	<div style={groupStyles}>
+		<span>{data.label}</span>
+		<span style={groupBadgeStyles}>{data.options.length}</span>
+	</div>
+);
+
 const Experience = props => {
 	const { register, handleSubmit } = useForm();
 	const { action, state } = useStateMachine(updateAction);
@@ -30,34 +55,17 @@ const Experience = props => {
 				register={register}
 				options={focusArea}
 			/>
+			<br />
+			<label>Strengths</label>
 			<MultiSelect name='workStrengths' options={strengths} register={register} />
-			<label>
-				<h3>Instruments:</h3>
-			</label>
-			<label>
-				Guitar
-				<input type='checkbox' name='instruments' ref={register} value='Guitar' />
-			</label>
-			<label>
-				Bass
-				<input type='checkbox' name='instruments' ref={register} value='Bass' />
-			</label>
-			<label>
-				Vocals
-				<input type='checkbox' name='instruments' ref={register} value='Vocals' />
-			</label>
-			<label>
-				Drums
-				<input type='checkbox' name='instruments' ref={register} value='Drums' />
-			</label>
-			<label>
-				Synth
-				<input type='checkbox' name='instruments' ref={register} value='Synth' />
-			</label>
-			<label>
-				Brass
-				<input type='checkbox' name='instruments' ref={register} value='Brass' />
-			</label>
+			<br />
+			<label>Known Instruments</label>
+			<MultiSelect
+				name='instruments'
+				options={groupedInstruments}
+				grouped={formatGroupLabel}
+				register={register}
+			/>
 		</Form>
 	);
 };
