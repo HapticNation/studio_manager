@@ -54,6 +54,10 @@ $desktop-width: 1024px;
 	max-width: 768px;
 }
 
+#button-wrapper {
+	padding: 0.5em;
+}
+
 .card-form {
 	@include mobile {
 		width: 95vw;

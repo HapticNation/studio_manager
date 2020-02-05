@@ -4,6 +4,7 @@ export {
 	CardHeader,
 	CardTitle,
 	CardSubtitle,
+	CardSubmit,
 	CardFooter
 } from './Card';
 

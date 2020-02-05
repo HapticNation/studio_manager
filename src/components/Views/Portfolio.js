@@ -1,13 +1,12 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
 import { withRouter } from 'react-router-dom';
 import { useStateMachine } from 'little-state-machine';
+import { useForm } from 'react-hook-form';
 import updateAction from '../../actions/updateAction';
-import { Dropdown, Form } from '../Form';
-import { focusArea } from '../../data';
+import { Form } from '../Form';
 
 const Experience = props => {
-	const { register, handleSubmit } = useForm();
+	const { handleSubmit } = useForm();
 	const { action } = useStateMachine(updateAction);
 	const onSubmit = data => {
 		action(data);
@@ -17,15 +16,10 @@ const Experience = props => {
 	return (
 		<Form
 			step={props.location.pathname}
-			title='Experience'
+			title='Portfolio'
 			onSubmit={handleSubmit(onSubmit)}
 		>
-			<Dropdown
-				label='Focus Area'
-				name='focusArea'
-				register={register}
-				options={focusArea}
-			/>
+			Portfolio not yet implemented, submit to get results of form up to this point
 		</Form>
 	);
 };

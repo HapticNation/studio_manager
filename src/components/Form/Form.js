@@ -1,5 +1,12 @@
 import React from 'react';
-import { Card, CardHeader, CardFooter, CardTitle, CardContent } from '../Layout';
+import {
+	Card,
+	CardHeader,
+	CardFooter,
+	CardTitle,
+	CardContent,
+	CardSubmit
+} from '../Layout';
 import { HeroWithSteps } from '../Layout';
 
 export const Form = props => {
@@ -14,15 +21,13 @@ export const Form = props => {
 
 					<CardContent>{props.children}</CardContent>
 
-					<CardFooter>
-						{props.endStep ? (
-							''
-						) : (
-							<div className='control'>
-								<button className='button is-primary'>Submit</button>
-							</div>
-						)}
-					</CardFooter>
+					{props.endStep ? (
+						''
+					) : (
+						<CardFooter>
+							<CardSubmit />
+						</CardFooter>
+					)}
 				</Card>
 			</form>
 		</>

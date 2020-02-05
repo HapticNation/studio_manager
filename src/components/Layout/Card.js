@@ -29,8 +29,8 @@ export const CardContent = props => {
 
 export const CardFooter = props => {
 	return (
-		<footer className='card-footer'>
-			<div className='container'>{props.children}</div>
+		<footer className='card-footer level'>
+			<div className='container level-right'>{props.children}</div>
 		</footer>
 	);
 };
@@ -38,7 +38,7 @@ export const CardFooter = props => {
 export const CardSubmit = props => {
 	return (
 		<CardFooter>
-			<div className='control'>
+			<div id='button-wrapper' className='control level-item'>
 				<button className='button is-primary'>Submit</button>
 			</div>
 		</CardFooter>
