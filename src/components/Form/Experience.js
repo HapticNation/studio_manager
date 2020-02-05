@@ -48,19 +48,20 @@ const Experience = props => {
 			title='Experience'
 			onSubmit={handleSubmit(onSubmit)}
 		>
-			>
 			<Dropdown
 				label='Focus Area'
 				name='focusArea'
 				register={register}
 				options={focusArea}
 			/>
-			<br />
-			<label>Strengths</label>
-			<MultiSelect name='workStrengths' options={strengths} register={register} />
-			<br />
-			<label>Known Instruments</label>
 			<MultiSelect
+				label='Strengths'
+				name='workStrengths'
+				options={strengths}
+				register={register}
+			/>
+			<MultiSelect
+				label='Known Instruments'
 				name='instruments'
 				options={groupedInstruments}
 				grouped={formatGroupLabel}
