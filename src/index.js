@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { StateMachineProvider, createStore, DevTool } from 'little-state-machine';
-import { Profile, Experience, Portfolio, Result } from './components/Form';
+import { Profile, Experience, Portfolio, Result } from './components/Views';
 import './styles/scss/styles.scss';
 
 createStore({

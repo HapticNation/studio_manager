@@ -1,7 +1,6 @@
 import React from 'react';
 
 const StepItem = props => {
-	console.log(props.active);
 	return (
 		<li className={`steps-segment ${props.active}`}>
 			<a href={props.path} className='steps-marker'>
