@@ -5,6 +5,9 @@ import { Steps } from '../Steps';
 
 const Result = props => {
 	const { state } = useStateMachine(updateAction);
+	state.data.knownInstruments.forEach(function(i) {
+		console.log(i);
+	});
 
 	return (
 		<div>
