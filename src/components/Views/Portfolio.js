@@ -4,6 +4,7 @@ import { useStateMachine } from 'little-state-machine';
 import { useForm } from 'react-hook-form';
 import updateAction from '../../actions/updateAction';
 import { Form } from '../Form';
+import { Upload } from '../Files';
 
 const Experience = props => {
 	const { handleSubmit } = useForm();
@@ -19,7 +20,7 @@ const Experience = props => {
 			title='Portfolio'
 			onSubmit={handleSubmit(onSubmit)}
 		>
-			Portfolio not yet implemented, submit to get results of form up to this point
+			<Upload />
 		</Form>
 	);
 };
