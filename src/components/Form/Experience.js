@@ -3,84 +3,34 @@ import { useForm } from 'react-hook-form';
 import { withRouter } from 'react-router-dom';
 import { useStateMachine } from 'little-state-machine';
 import updateAction from '../../actions/updateAction';
-import { Steps } from '../Steps';
-import { Dropdown } from '../Fields';
-import { Form } from '../Fields';
-
-const focusArea = [
-	{ id: 'f1', text: 'Select Focus Area', val: '' },
-	{ id: 'f2', text: 'Performer', val: 'Performer' },
-	{ id: 'f3', text: 'Writer', val: 'Writer' },
-	{ id: 'f4', text: 'Producer', val: 'Producer' },
-	{ id: 'f5', text: 'Engineer', val: 'Engineer' },
-	{ id: 'f6', text: 'Technician', val: 'Technician' }
-];
+import { Dropdown, Form, MultiSelect } from '../Fields';
+import { focusArea, strengths, groupedInstruments, genres } from '../../data';
 
 const Experience = props => {
 	const { register, handleSubmit } = useForm();
 	const { action, state } = useStateMachine(updateAction);
 	const onSubmit = data => {
 		action(data);
+		console.log('data', data);
 		props.history.push('./Portfolio');
 	};
 	console.log(state.data);
 	console.log('Experience Step: ' + state.data.step);
 	return (
-		<Form pushPath='./Portfolio.js' step={props.location.pathname} title='Experience'>
+		<Form
+			pushPath='./Portfolio.js'
+			step={props.location.pathname}
+			title='Experience'
+			onSubmit={handleSubmit(onSubmit)}
+		>
+			>
 			<Dropdown
 				label='Focus Area'
 				name='focusArea'
 				register={register}
 				options={focusArea}
 			/>
-
-			<label>Strengths:</label>
-			<br />
-			<label>
-				Performer
-				<input
-					type='checkbox'
-					name='workStrengths'
-					ref={register}
-					value='Performer'
-				/>
-			</label>
-			<label>
-				Writer
-				<input
-					type='checkbox'
-					name='workStrengths'
-					ref={register}
-					value='Writer'
-				/>
-			</label>
-			<label>
-				Producer
-				<input
-					type='checkbox'
-					name='workStrengths'
-					ref={register}
-					value='Producer'
-				/>
-			</label>
-			<label>
-				Engineer
-				<input
-					type='checkbox'
-					name='workStrengths'
-					ref={register}
-					value='Engineer'
-				/>
-			</label>
-			<label>
-				Technician
-				<input
-					type='checkbox'
-					name='workStrengths'
-					ref={register}
-					value='Technician'
-				/>
-			</label>
+			<MultiSelect name='workStrengths' options={strengths} register={register} />
 			<label>
 				<h3>Instruments:</h3>
 			</label>

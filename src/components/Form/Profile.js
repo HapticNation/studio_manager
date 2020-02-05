@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { useStateMachine } from 'little-state-machine';
 import updateAction from '../../actions/updateAction';
 import { TextField, Dropdown } from '../Fields';
-
+import { groupPref, contract, focusArea } from '../../data';
 import {
 	Card,
 	CardHeader,
@@ -14,21 +14,6 @@ import {
 	CardContent,
 	HeroWithSteps
 } from '../Layout';
-
-const groupPref = [
-	{ id: 'g1', text: 'Select Preference', val: '' },
-	{ id: 'g2', text: 'Group and Solo', val: 'both' },
-	{ id: 'g3', text: 'Group Only', val: 'group' },
-	{ id: 'g4', text: 'Solo Only', val: 'solo' }
-];
-
-const contract = [
-	{ id: 'c1', text: 'Select Status', val: '' },
-	{ id: 'c2', text: 'Unsigned', val: 'unsigned' },
-	{ id: 'c3', text: 'Signed', val: 'signed' },
-	{ id: 'c4', text: 'Employed', val: 'employed' },
-	{ id: 'c5', text: 'Freelance', val: 'freelance' }
-];
 
 const Profile = props => {
 	const { register, handleSubmit } = useForm();

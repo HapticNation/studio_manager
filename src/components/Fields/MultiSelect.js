@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Select from 'react-select';
 
-const MultiSelect = props => {
+const MultiSelect = ({ register, ...props }) => {
 	return (
-		<div>
-			<select>Test</select>
-			<select>Test</select>
-			<select>Test</select>
-			<select>Test</select>
-		</div>
+		<Select
+			isMulti
+			name={props.name}
+			options={props.options}
+			className='is-rounded'
+			classNamePrefix='select'
+			ref={register}
+		/>
 	);
 };
 

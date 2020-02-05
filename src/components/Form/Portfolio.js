@@ -3,8 +3,7 @@ import { useForm } from 'react-hook-form';
 import { withRouter } from 'react-router-dom';
 import { useStateMachine } from 'little-state-machine';
 import updateAction from '../../actions/updateAction';
-import { Steps } from '../Steps';
-import { CardHeader, CardContent, CardTitle, CardSubtitle, CardFooter } from '../Layout';
+import { Dropdown, MultiSelect, Form } from '../Fields';
 
 const Portfolio = props => {
 	const { register, handleSubmit } = useForm();
@@ -16,33 +15,25 @@ const Portfolio = props => {
 	};
 
 	return (
-		<div>
-			<CardHeader>
-				<Steps step={props.location.pathname} />
-				<CardTitle title='Portfolio' />
-			</CardHeader>
-			<form onSubmit={handleSubmit(onSubmit)}>
-				<h2>Step 1</h2>
-				<label>
-					First Name:
-					<input
-						name='firstName'
-						ref={register}
-						defaultValue={state.data.firstName}
-					/>
-				</label>
-				<label>
-					Last Name:
-					<input
-						name='lastName'
-						ref={register}
-						defaultValue={state.data.lastName}
-					/>
-				</label>
-				<input type='submit' />
-				<input type='reset' />
-			</form>
-		</div>
+		<Form pushPath='./Result' step={props.location.pathname} title='Portfolio'>
+			<MultiSelect ref={register} />
+			<label>
+				First Name:
+				<input
+					name='firstName'
+					ref={register}
+					defaultValue={state.data.firstName}
+				/>
+			</label>
+			<label>
+				Last Name:
+				<input
+					name='lastName'
+					ref={register}
+					defaultValue={state.data.lastName}
+				/>
+			</label>
+		</Form>
 	);
 };
 
